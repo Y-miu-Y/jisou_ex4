@@ -1,10 +1,13 @@
-import { Button } from '@chakra-ui/react'
+import { FC } from "react";
+import { ChakraProvider } from "@chakra-ui/react";
+import { Ex4Router } from "./Ex4Router";
 
-export const Ex4 = () => {
-
+export const Ex4: FC = () => {
   return (
     <>
-      <Button>ボタン</Button>
+      <ChakraProvider>
+        <Ex4Router />
+      </ChakraProvider>
     </>
-  )
-}
+  );
+};
