@@ -14,8 +14,8 @@ export const useGetUser = () => {
       .then((res) => {
         setUser(res?.data?.map((row) => User.fromDatabaseResult(row))[0] ?? undefined);
       })
-      .catch(() => {
-        // window.alert("取得時エラー発生");
+      .catch((err) => {
+        console.error(err);
       })
       .finally(()=> {
         setIsUserLoading(false);

@@ -11,7 +11,7 @@ type Props = {
 export const QiitaIcon:FC<Props> = props => {
   const { id } = props
   return (
-    <Box>
+    <Box data-testid="qiita">
       <a href={`https://qiita.com/${id}`}>
         <SiQiita size="3rem"/>
       </a>
@@ -22,7 +22,7 @@ export const QiitaIcon:FC<Props> = props => {
 export const GithubIcon:FC<Props> = props => {
   const { id } = props
   return (
-    <Box>
+    <Box data-testid="github">
       <a href={`https://github.com/${id}`}>
         <FaGithub  size="3rem"/>
       </a>
@@ -33,7 +33,7 @@ export const GithubIcon:FC<Props> = props => {
 export const XIcon:FC<Props> = props => {
   const { id } = props
   return (
-    <Box>
+    <Box data-testid="X">
       <a href={`https://x.com/${id}`}>
         <FaXTwitter  size="3rem"/>
       </a>

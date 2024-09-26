@@ -1,11 +1,11 @@
 export class User{
-  readonly user_id!: string;
-  readonly name!: string;
-  readonly description!: string;
-  readonly github_id!: string;
-  readonly qiita_id!: string;
-  readonly x_id!: string;
-  readonly skills_name!: Array<string>;
+  user_id!: string;
+  name!: string;
+  description!: string;
+  github_id!: string;
+  qiita_id!: string;
+  x_id!: string;
+  skills_name!: Array<string>;
 
   constructor(init: {
     user_id: string;
