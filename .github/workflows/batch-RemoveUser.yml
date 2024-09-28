@@ -10,6 +10,13 @@ jobs:
     name: remove-user
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - run: npm ci
+      - name: Print current directory
+        run: pwd && ls -la
       - name: execute-batch
-        run: |
-          npx ts-node --esm ./batch/index.ts
+        run: npx ts-node --esm ./batch/index.ts
