@@ -1,5 +1,5 @@
 import { findUserByUserId } from "../hooks/api/findUserByUserId";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { UserCard } from "../pages/UserCard";
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Route, Routes, useNavigate } from "react-router-dom";
@@ -144,6 +144,5 @@ describe('名刺カードのテスト(描画)', () => {
     await userEvent.click(target);
 
     expect(mockNav).toHaveBeenCalledWith('/');
-
   });
 });

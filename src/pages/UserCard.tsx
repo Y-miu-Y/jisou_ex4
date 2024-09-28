@@ -74,6 +74,7 @@ export const UserCard: FC = () => {
           <Spacer h="10px"></Spacer>
           <Button w="100%" backgroundColor="blue" color="white"
             onClick={() => navigate('/')}
+            data-testid="return-button"
           >
             戻る
           </Button>
