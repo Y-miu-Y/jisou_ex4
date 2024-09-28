@@ -16,7 +16,5 @@ jobs:
         with:
           node-version: "18"
       - run: npm ci
-      - name: Print current directory
-        run: pwd && ls -la
       - name: execute-batch
-        run: npx ts-node --esm --experimentalSpecifierResolution=node ./batch/index.mts
+        run: npx ts-node --esm --experimentalSpecifierResolution=node ./batch/index.ts
