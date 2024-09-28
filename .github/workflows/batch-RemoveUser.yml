@@ -3,6 +3,9 @@ name: Daily Batch Job
 on:
   schedule:
     - cron: "0 21 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
 
 jobs:
   run-batch:
