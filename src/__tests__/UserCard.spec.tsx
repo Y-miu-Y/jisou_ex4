@@ -1,13 +1,16 @@
 import { findUserByUserId } from "../hooks/api/findUserByUserId";
-import { findByTestId, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { UserCard } from "../pages/UserCard";
-import { BrowserRouter, MemoryRouter, Route, Routes } from "react-router-dom";
+import userEvent from '@testing-library/user-event';
+import { MemoryRouter, Route, Routes, useNavigate } from "react-router-dom";
 
 
 jest.mock('../hooks/api/findUserByUserId');
-jest.mock('../hooks/api/insertNewUser');
-jest.mock('../hooks/api/insertUserSkill');
-jest.mock('../hooks/api/selectAllSkills');
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: jest.fn(),
+}));
 
 describe('名刺カードのテスト(描画)', () => {
   beforeAll(() => {
@@ -77,7 +80,7 @@ describe('名刺カードのテスト(描画)', () => {
     );
 
     const target = await screen.findByTestId('skill');
-    screen.debug();
+    
     expect(target).toHaveTextContent('React');
   });
 
@@ -121,5 +124,26 @@ describe('名刺カードのテスト(描画)', () => {
     const target = await screen.findByTestId('X');
 
     expect(target).toBeInTheDocument();
+  });
+
+  it('戻るボタンをクリックすると/に遷移する', async() => {
+    const mockNav = jest.fn();
+    (useNavigate as jest.Mock).mockReturnValue(mockNav);
+    
+    
+    render(
+      <MemoryRouter initialEntries={['/cards/testID']}>
+        <Routes>
+          <Route path="/cards/:id" element={<UserCard />} />
+        </Routes>
+      </MemoryRouter>
+    );
+
+    const target = await screen.findByTestId('return-button');
+
+    await userEvent.click(target);
+
+    expect(mockNav).toHaveBeenCalledWith('/');
+
   });
 });
