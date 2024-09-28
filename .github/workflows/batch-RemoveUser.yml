@@ -17,4 +17,4 @@ jobs:
           node-version: "18"
       - run: npm ci
       - name: execute-batch
-        run: npx ts-node --esm --experimentalSpecifierResolution=node ./batch/index.ts
+        run: npx ts-node src/batch/index.ts
