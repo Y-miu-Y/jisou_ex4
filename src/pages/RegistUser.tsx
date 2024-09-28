@@ -12,7 +12,7 @@ export const RegistUser:FC = () => {
 
   const { skills, getSkills } = useGetSkills();
 
-  const { addUser, isRequestLoading } = useAddUser();
+  const { addUser } = useAddUser();
 
   useEffect(() => {
     getSkills();
@@ -32,7 +32,7 @@ export const RegistUser:FC = () => {
       <Box justifyContent='center' height="100%" alignItems='center' bg='gray.100'>
         <VStack>
           <Spacer h={50}></Spacer>
-          <Heading as="h1" size="lg">
+          <Heading as="h1" size="lg" data-testid="title">
             名刺新規登録
           </Heading>
           <Card h="80%" w="80vw">
@@ -43,6 +43,7 @@ export const RegistUser:FC = () => {
                     <FormControl isInvalid={!!errors.user_id}>
                       <FormLabel htmlFor="user_id">好きな英単語 *</FormLabel>
                       <Input id="user_id" borderWidth="2px" borderColor="black" placeholder="coffee"
+                        data-testid="id"
                         {...register('user_id', {
                           required : '必須項目です',
                           pattern: {
@@ -51,38 +52,41 @@ export const RegistUser:FC = () => {
                           }
                         })}
                       />
-                      <FormErrorMessage>
+                      <FormErrorMessage data-testid="id-err">
                         {errors.user_id && errors.user_id.message}
                       </FormErrorMessage>
                     </FormControl>
                     <FormControl isInvalid={!!errors.name}>
                       <FormLabel htmlFor="name">お名前 *</FormLabel>
                       <Input id="name" borderWidth="2px" borderColor="black"
-                      {...register('name', {
-                        required : '必須項目です'
-                        }
-                      )}
+                        data-testid="name"
+                        {...register('name', {
+                          required : '必須項目です'
+                          }
+                        )}
                       />
-                      <FormErrorMessage>
+                      <FormErrorMessage data-testid="name-err">
                         {errors.name && errors.name.message}
                       </FormErrorMessage>
                     </FormControl>
                     <FormControl isInvalid={!!errors.description}>
                       <FormLabel htmlFor="description">自己紹介 *</FormLabel>
-                      <Textarea id="description" borderWidth="2px" borderColor="black" resize="none" 
+                      <Textarea id="description" borderWidth="2px" borderColor="black" resize="none"
+                        data-testid="desc"
                         placeholder="<h1>HTMLタグも使えます</h1>"
                         {...register('description', {
                           required : '必須項目です'
                           }
                         )}
                       />
-                      <FormErrorMessage>
+                      <FormErrorMessage data-testid="desc-err">
                         {errors.description && errors.description.message}
                       </FormErrorMessage>
                     </FormControl>
                     <FormControl isInvalid={!!errors.skills_id}>
                       <FormLabel htmlFor="skills_id">好きな技術 * </FormLabel>
                       <Select id="skills_id" borderWidth="2px" borderColor="black" defaultValue=""
+                        data-testid="skill"
                         {...register('skills_id', {
                             required : '必須項目です'
                         })}
@@ -94,26 +98,26 @@ export const RegistUser:FC = () => {
                           </Fragment>
                         ))}
                       </Select>
-                      <FormErrorMessage>
+                      <FormErrorMessage data-testid="skill-err">
                         {errors.skills_id && errors.skills_id.message}
                       </FormErrorMessage>
                     </FormControl>
                     <FormControl>
                       <FormLabel htmlFor="github_id">Github ID</FormLabel>
-                      <Input id="github_id" borderWidth="2px" borderColor="black" />
+                      <Input id="github_id" borderWidth="2px" borderColor="black" data-testid="github"/>
                     </FormControl>
                     <FormControl>
                       <FormLabel htmlFor="qiita_id">Qiita ID</FormLabel>
-                      <Input id="qiita_id" borderWidth="2px" borderColor="black" />
+                      <Input id="qiita_id" borderWidth="2px" borderColor="black" data-testid="qiita"/>
                     </FormControl>
                     <FormControl>
                       <FormLabel htmlFor="x_id">X ID</FormLabel>
-                      <Input id="x_id" borderWidth="2px" borderColor="black" />
+                      <Input id="x_id" borderWidth="2px" borderColor="black" data-testid="x"/>
                     </FormControl>
 
                     <Text as="p" w="100%">*は必須項目です</Text>
 
-                    <Button w="100%" type="submit" backgroundColor="blue" color="white">登録</Button>
+                    <Button w="100%" type="submit" backgroundColor="blue" color="white" data-testid="submit">登録</Button>
                     
                   </VStack>
                 </form>
