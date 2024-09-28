@@ -1,0 +1,15 @@
+name: remove-user-batch
+
+on:
+  schedule:
+    - cron: "0 21 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: remove-user
+    runs-on: ubuntu-latest
+    steps:
+      - name: execute-batch
+        run: |
+          npx ts-node --esm ./batch/index.ts
