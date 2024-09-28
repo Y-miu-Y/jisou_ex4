@@ -1,20 +1,23 @@
-name: remove-user-batch
+name: Daily Batch Job
 
 on:
   schedule:
     - cron: "0 21 * * *"
-  workflow_dispatch:
 
 jobs:
-  build:
-    name: remove-user
+  run-batch:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "18"
-      - run: npm ci
-      - name: execute-batch
-        run: npx ts-node --esm  src/batch/index.ts
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run batch script
+        run: npx ts-node ./batch/index.ts
