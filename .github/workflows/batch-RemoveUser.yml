@@ -23,4 +23,4 @@ jobs:
         run: npm ci
 
       - name: Run batch script
-        run: npx ts-node ./batch/index.ts
+        run: npm run batch
