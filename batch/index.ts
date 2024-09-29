@@ -1,4 +1,4 @@
-import { deleteAllUsers, deleteAllUserSkill } from "../src/hooks/api/deleteAll";
+import { deleteAllUsers, deleteAllUserSkill } from "../src/hooks/api/deleteAll.js";
 
 const main = () => {
   deleteAllUserSkill().catch(err => console.error(err));

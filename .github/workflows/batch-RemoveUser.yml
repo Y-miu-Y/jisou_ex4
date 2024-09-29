@@ -5,6 +5,10 @@ on:
     - cron: "0 21 * * *"
   workflow_dispatch:
 
+env:
+  VITE_SUPABASE_URL: ${{secrets.VITE_SUPABASE_URL}}
+  VITE_SUPABASE_ANON_KEY: ${{secrets.VITE_SUPABASE_ANON_KEY}}
+
 jobs:
   run-batch:
     runs-on: ubuntu-latest
