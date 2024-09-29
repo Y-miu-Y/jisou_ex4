@@ -3,10 +3,10 @@ import { insertNewUser } from "./api/insertNewUser";
 import { insertUserSkill } from "./api/insertUserSkill";
 
 export type UserInput = {
-  user_id?: string;
-  name?: string;
-  description?: string;
-  skills_id?: number;
+  user_id: string;
+  name: string;
+  description: string;
+  skills_id: number;
   github_id?: string;
   qiita_id?: string
   x_id?: string;
@@ -19,9 +19,9 @@ export const useAddUser = () => {
     setIsRequestLoading(true);
 
     await insertNewUser({
-      user_id: data.user_id!,
-      name: data.name!,
-      description: data.description!,
+      user_id: data.user_id,
+      name: data.name,
+      description: data.description,
       github_id: data.github_id,
       qiita_id: data.qiita_id,
       x_id: data.x_id

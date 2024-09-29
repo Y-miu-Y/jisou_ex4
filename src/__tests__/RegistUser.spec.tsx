@@ -66,6 +66,7 @@ describe('名刺登録ページの機能テスト', () => {
   
   it('全項目入力して登録ボタンを押すと/に遷移する', async() => {
     const mockNav = jest.fn();
+    const mockInsertNewUser = (insertNewUser as jest.Mock);
     (useNavigate as jest.Mock).mockReturnValue(mockNav);
 
     render(
@@ -93,10 +94,21 @@ describe('名刺登録ページの機能テスト', () => {
     await userEvent.click(submit);
 
     expect(mockNav).toHaveBeenCalledWith('/');
+    expect(mockInsertNewUser).toHaveBeenCalledWith(
+      {
+        user_id: 'testID',
+        name: 'テスト太郎',
+        description: 'hello World',
+        github_id: 'testGithub',
+        qiita_id: 'testQiita',
+        x_id: 'testX'
+      }
+    );
   });
 
   it('オプションを入力しなくても登録ができる', async() => {
     const mockNav = jest.fn();
+    const mockInsertNewUser = (insertNewUser as jest.Mock);
     (useNavigate as jest.Mock).mockReturnValue(mockNav);
 
     render(
@@ -118,6 +130,16 @@ describe('名刺登録ページの機能テスト', () => {
     await userEvent.click(submit);
 
     expect(mockNav).toHaveBeenCalledWith('/');
+    expect(mockInsertNewUser).toHaveBeenCalledWith(
+      {
+        user_id: 'testID',
+        name: 'テスト太郎',
+        description: 'hello World',
+        github_id: '',
+        qiita_id: '',
+        x_id: ''
+      }
+    )
   });
 
   describe('エラーメッセージの確認', () => {

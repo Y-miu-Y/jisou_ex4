@@ -104,15 +104,21 @@ export const RegistUser:FC = () => {
                     </FormControl>
                     <FormControl>
                       <FormLabel htmlFor="github_id">Github ID</FormLabel>
-                      <Input id="github_id" borderWidth="2px" borderColor="black" data-testid="github"/>
+                      <Input id="github_id" borderWidth="2px" borderColor="black" data-testid="github"
+                        {...register('github_id', {})}
+                      />
                     </FormControl>
                     <FormControl>
                       <FormLabel htmlFor="qiita_id">Qiita ID</FormLabel>
-                      <Input id="qiita_id" borderWidth="2px" borderColor="black" data-testid="qiita"/>
+                      <Input id="qiita_id" borderWidth="2px" borderColor="black" data-testid="qiita"
+                        {...register('qiita_id', {})}
+                      />
                     </FormControl>
                     <FormControl>
                       <FormLabel htmlFor="x_id">X ID</FormLabel>
-                      <Input id="x_id" borderWidth="2px" borderColor="black" data-testid="x"/>
+                      <Input id="x_id" borderWidth="2px" borderColor="black" data-testid="x"
+                        {...register('x_id', {})}
+                      />
                     </FormControl>
 
                     <Text as="p" w="100%">*は必須項目です</Text>
