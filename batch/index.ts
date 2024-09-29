@@ -1,5 +1,8 @@
+import { deleteAllUsers, deleteAllUserSkill } from "../src/hooks/api/deleteAll";
+
 const main = () => {
-  console.log("AAA");
+  deleteAllUserSkill().catch(err => console.error(err));
+  deleteAllUsers().catch(err => console.error(err));
 };
 
 main();
