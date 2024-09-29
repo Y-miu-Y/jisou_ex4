@@ -1,4 +1,5 @@
 import { deleteAllUser } from "../src/hooks/api/deleteAllUser.js";
+import 'dotenv/config';
 
 const main = () => {
   deleteAllUser();
